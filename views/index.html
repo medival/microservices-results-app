@@ -6,7 +6,7 @@
     <base href="/index.html">
     <meta name = "viewport" content = "width=device-width, initial-scale = 1.0">
     <meta name="keywords" content="docker-compose, docker, stack">
-    <meta name="author" content="Tutum dev team">
+    <meta name="author" content="Docker">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body ng-controller="statsCtrl" >
@@ -28,22 +28,16 @@
             <div class="label">Dogs</div>
             <div class="stat">{{bPercent | number:1}}%</div>
           </div>
-
         </div>
       </div>
     </div>
-    <div id="all-votes">
-      <ul>
-      <li ng-repeat="x in allVotes">
-      {{ x.ts + ':  ' + x.id + ' voted for \'' + (x.vote=='a'?'Cats':'Dogs') + '\'' }}
-      </li>
-      </ul>
-    </div>
-    <div id="result" ng-if="total > 0">
-      {{total}} votes
+    <div id="result">
+      <span ng-if="total == 0">No votes yet</span>
+      <span ng-if="total == 1">{{total}} vote</span>
+      <span ng-if="total >= 2">{{total}} votes</span>
     </div>
     <script src="socket.io.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="angular.min.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
